@@ -4,7 +4,7 @@ import { useGetProductQuery, useDeleteProductMutation } from "../services/produc
 export default function Product() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { data: product, isLoading, error } = useGetProductQuery(id!);
+  const { data: product, isLoading, error } = useGetProductQuery(Number(id));
   const [deleteProduct] = useDeleteProductMutation(); 
  
 

@@ -10,7 +10,7 @@ export default function EditForm() {
   const navigate = useNavigate();
 
   // گرفتن اطلاعات محصول
-  const { data: product, isLoading, error } = useGetProductQuery(id!);
+  const { data: product, isLoading, error } = useGetProductQuery(Number(id));
   const [updateProduct] = useUpdateProductMutation();
 
   // state برای کنترل فرم
@@ -36,14 +36,16 @@ export default function EditForm() {
     if (!id) return;
 
     await updateProduct({
-      id: Number(id), // چون id از URL استرینگ میاد
-      name,
-      price: parseFloat(price),
-      category,
-      description,
-      image,
-      rating: product?.rating ?? { rate: 0, count: 0 },
-    });
+  id: Number(id),
+  data: {
+    name,
+    price: parseFloat(price),
+    category,
+    description,
+    image,
+    rating: product?.rating ?? { rate: 0, count: 0 },
+  },
+});
 
     navigate(`/`); // بعد از آپدیت برگرده به لیست محصولات
   };

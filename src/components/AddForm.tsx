@@ -13,6 +13,7 @@ const AddProduct = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!name || !price || !category || !description || !image) return;
     await addProduct({
       name,
       price: parseFloat(price),
@@ -26,7 +27,7 @@ const AddProduct = () => {
 
   return (
     <form onSubmit={handleSubmit} className="form-container">
-       <button onClick={() => navigate("/")} className="back-btn">← Back</button>
+       <button type="button" onClick={() => navigate("/")} className="back-btn">← Back</button>
       <h2>Add New Product</h2>
       <input
         placeholder="Name"
