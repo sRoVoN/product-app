@@ -1,4 +1,4 @@
-import './styles/App.scss';
+import './styles/app.scss';
 import AppRoutes from './routes/Routes';
 
 
